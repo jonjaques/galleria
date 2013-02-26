@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Galleria Classic Theme</title>
+        <style>
+
+            /* Demo styles */
+            html,body{background:#222;margin:0;}
+            body{border-top:4px solid #000;}
+            .content{color:#777;font:12px/1.4 "helvetica neue",arial,sans-serif;width:620px;margin:20px auto;}
+            h1{font-size:12px;font-weight:normal;color:#ddd;margin:0;}
+            p{margin:0 0 20px}
+            a {color:#22BCB9;text-decoration:none;}
+            a:focus{outline:none;}
+            .cred{margin-top:20px;font-size:11px;}
+
+            /* This rule is read by Galleria to define the gallery height: */
+            #galleria{height:320px;width:400px;}
+            
+            #animate{font-size:1.5em;}
+            #animate:hover{color:#fff;}
+            #message{height:100px;font-size:2em;color:#fff;}
+
+        </style>
+
+        <!-- load jQuery -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+
+        <!-- load Galleria -->
+        <script src="galleria-1.3c.js"></script>
+
+    </head>
+<body>
+    <div class="content">
+        <h1>Galleria Classic Theme</h1>
+        <p>Demonstrating a carousel resize fix.</p>
+        <a href="#" id="animate">Click to demonstrate</a>
+        <!-- Adding gallery images. We use resized thumbnails here for better performance, but it’s not necessary -->
+
+        <div id="galleria"> 
+			<a href="http://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Gull_portrait_ca_usa.jpg/800px-Gull_portrait_ca_usa.jpg">
+				<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Gull_portrait_ca_usa.jpg/100px-Gull_portrait_ca_usa.jpg">
+			</a>
+			<a href="http://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Gull_portrait_ca_usa.jpg/800px-Gull_portrait_ca_usa.jpg">
+				<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Gull_portrait_ca_usa.jpg/100px-Gull_portrait_ca_usa.jpg">
+			</a>
+			<a href="http://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Gull_portrait_ca_usa.jpg/800px-Gull_portrait_ca_usa.jpg">
+				<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Gull_portrait_ca_usa.jpg/100px-Gull_portrait_ca_usa.jpg">
+			</a>
+			<a href="http://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Gull_portrait_ca_usa.jpg/800px-Gull_portrait_ca_usa.jpg">
+				<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Gull_portrait_ca_usa.jpg/100px-Gull_portrait_ca_usa.jpg">
+			</a>
+			<a href="http://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Gull_portrait_ca_usa.jpg/800px-Gull_portrait_ca_usa.jpg">
+				<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Gull_portrait_ca_usa.jpg/100px-Gull_portrait_ca_usa.jpg">
+			</a>
+			<a href="http://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Metz_Porte_des_Allemands_R07.jpg/800px-Metz_Porte_des_Allemands_R07.jpg">
+				<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Metz_Porte_des_Allemands_R07.jpg/100px-Metz_Porte_des_Allemands_R07.jpg">
+			</a>
+			<a href="http://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Gull_portrait_ca_usa.jpg/800px-Gull_portrait_ca_usa.jpg">
+				<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Gull_portrait_ca_usa.jpg/100px-Gull_portrait_ca_usa.jpg">
+			</a>
+		</div> 
+		<div id="message"></div>
+		<p><a href="bug.html">Click here,</a> to show buggy version.</p>
+        
+    <script>
+
+    // Load the classic theme
+    Galleria.loadTheme('themes/classic/galleria.classic.min.js');
+
+    // Initialize Galleria
+    Galleria.run('#galleria',{show: 5});
+
+	$('#animate').click(function (e){
+		e.preventDefault();
+		$('#message').text('');
+		$('#galleria').css('width','400px').animate({
+			width: '200px'
+		}, {
+			duration: 1500,
+			step: function () {
+				Galleria.get(0).resize();
+			},
+			complete: function(){
+				$('#message').text('Active follows visible area.');
+			}
+		}).delay(1000).animate({
+			width: '600px'
+		}, {
+			duration: 1500,
+			step: function () {
+				Galleria.get(0).resize();
+			},
+			complete: function(){
+				$('#message').text('All thumbnails there.');
+			}
+		});
+	});    
+    
+
+    </script>
+    </body>
+</html>
