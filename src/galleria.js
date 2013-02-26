@@ -1197,7 +1197,13 @@ Galleria = window.Galleria = function() {
             // one extra calculation
             carousel.size = vertical ? self.$( 'thumbnails-list' ).height() : self.$( 'thumbnails-list' ).width();
 
-            // todo: fix so the carousel moves to the left
+            // fix for minor carousel resize bug - now follows active thumb on resize
+            if ( wh > carousel.size ) {
+                carousel.follow( self.getIndex() );
+            }
+            else {
+                carousel.set(0);
+            }
         },
 
         bindControls: function() {
