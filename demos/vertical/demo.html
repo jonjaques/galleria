@@ -39,7 +39,7 @@
         <p>You can switch between <a href="#" id="classic">Classic</a> and <a href="#" id="vertical" class="active">Vertical</a> theme.</p>
         <p>
 		<code>
-			Galleria.unloadTheme();<br>
+			<!--Galleria.unloadTheme();<br>-->
 			Galleria.loadTheme('themes/classic/galleria.classic.min.js');<br>
 			Galleria.run('#galleria');<br>
 		</code>
@@ -135,9 +135,9 @@
     $('#classic').click(function(e) {
 		e.preventDefault();
 		if ( $(this).hasClass('active') ){
-			return
+			return;
 		}
-		Galleria.unloadTheme();
+		//Galleria.unloadTheme();
 		Galleria.loadTheme('themes/classic/galleria.classic.min.js');
 		Galleria.run('#galleria');
 		$(this).addClass('active').siblings('a').removeClass('active');
@@ -146,9 +146,9 @@
     $('#vertical').click(function(e) {
 		e.preventDefault();
 		if ( $(this).hasClass('active') ){
-			return
+			return;
 		}
-		Galleria.unloadTheme();
+		//Galleria.unloadTheme();
 		Galleria.loadTheme('themes/vertical/galleria.vertical.js');
 		Galleria.run('#galleria');
 		$(this).addClass('active').siblings('a').removeClass('active');
