@@ -19,8 +19,8 @@
             /* This rule is read by Galleria to define the gallery height: */
             #galleria{height:320px}
             
-            #classic, #vertical{padding:0.3em;font-size:1.2em;font-weight:bold;transition:all 0.2s;}
-            #classic:hover, #vertical:hover, #classic.active, #vertical.active{color:#eee;}
+            #classic, #vertic{padding:0.3em;font-size:1.2em;font-weight:bold;transition:all 0.2s;}
+            #classic:hover, #vertic:hover, #classic.active, #vertic.active{color:#eee;}
             .active{cursor:text;}
 
         </style>
@@ -36,7 +36,7 @@
     <div class="content">
         <h1>Galleria Classic and Vertical Theme</h1>
         <p>Demonstrating a new feature.</p>
-        <p>You can switch between <a href="#" id="classic">Classic</a> and <a href="#" id="vertical" class="active">Vertical</a> theme.</p>
+        <p>You can switch between <a href="#" id="classic">Classic</a> and <a href="#" id="vertic" class="active">Vertical</a> theme.</p>
         <p>
 		<code>
 			<!--Galleria.unloadTheme();<br>-->
@@ -143,7 +143,7 @@
 		$(this).addClass('active').siblings('a').removeClass('active');
 	});
 
-    $('#vertical').click(function(e) {
+    $('#vertic').click(function(e) {
 		e.preventDefault();
 		if ( $(this).hasClass('active') ){
 			return;
