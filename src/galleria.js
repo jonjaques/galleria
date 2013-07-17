@@ -114,9 +114,9 @@ var window = this,
     // video providers
     _video = {
         youtube: {
-            reg: /https?:\/\/(?:[a-zA_Z]{2,3}.)?(?:youtube\.com\/watch\?)((?:[\w\d\-\_\=]+&amp;(?:amp;)?)*v(?:&lt;[A-Z]+&gt;)?=([0-9a-zA-Z\-\_]+))/i,
+            reg: /(?:http|https?:)?\/\/(?:[a-zA_Z]{2,3}.)?(?:(?:m\.)?youtube\.com\/|youtu(?:be)?\.be\/)(?:watch\?|v\/|embed\/)?((?:v=)?([0-9a-zA-Z\-\_]+))/i,
             embed: function(id) {
-                return 'http://www.youtube.com/embed/'+id;
+                return '//www.youtube.com/embed/'+id;
             },
             getThumb: function( id, success, fail ) {
                 fail = fail || F;
@@ -1183,7 +1183,7 @@ Galleria = window.Galleria = function() {
             });
 
             self.$( 'thumbnails' ).css({
-                width: vertical ? w : wh, 
+                width: vertical ? w : wh,
                 height: vertical ? wh : h
             });
 
@@ -2666,12 +2666,12 @@ Galleria.prototype = {
 
         // add a notouch class on the container to prevent unwanted :hovers on touch devices
         this.$( 'container' ).addClass( Galleria.TOUCH ? 'touch' : 'notouch' );
-        
+
         // add a vertical class on the container if option carousel: "vertical"
         if ( options.carousel ) {
             this.$( 'container' ).addClass( (options.carousel === "vertical") ? 'vertical' : 'horizontal' );
         }
-        
+
         // add images to the controls
         if ( !this._options.swipe ) {
             $.each( new Array(2), function( i ) {
@@ -2776,7 +2776,7 @@ Galleria.prototype = {
             overflow: 'hidden',
             position: 'relative'
         });
-        
+
         if (options.carousel === "vertical") {
             this.$( 'thumbnails-list' ).css({
                 position: 'absolute',
